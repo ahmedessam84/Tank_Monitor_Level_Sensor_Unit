@@ -12,6 +12,13 @@
 extern "C" {
 #endif
     
+    
+#define NODE_NR     0x01    // assigned by a dip switch in the future
+#define NODE_TYPE   0x02    // for master = 0x01
+						    // for liquid level sensor  = 0x02
+							// for pressure sensor = 0x03
+                            // CAN ID = (NODE_TYPE<<8) | (NODE_ID)
+    
 typedef struct
 {
 	uint8_t node_nr;							// node number
