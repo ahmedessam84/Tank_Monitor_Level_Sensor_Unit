@@ -94,7 +94,7 @@ void CANSetMask( uint8_t ui8CanBfrNum, tCANMsgObject * pObject , uint8_t ui8IDTy
     {
         SET_REG_DATA( RXB0CON, ((3<<5) | (1<<2)), ((ui8IDType<<5) | (bDoubleBuffer<<2)) );
         
-        // STANDARD IDS ONLY
+        // STANDARD IDS ONLY i.e 11-bits or less
         if( pObject->ui32MsgID <= 0x7ff )
         {
             SET_REG_DATA( RXM0SIDH, 0xFF, pObject->ui32MsgIDMask>>3 );
@@ -119,7 +119,7 @@ void CANSetMask( uint8_t ui8CanBfrNum, tCANMsgObject * pObject , uint8_t ui8IDTy
     {
         SET_REG_DATA( RXB1CON, (3<<5), ui8IDType<<5 );
         
-        // STANDARD IDS ONLY
+        // STANDARD IDS ONLY i.e 11-bits or less
         if( pObject->ui32MsgID <= 0x7ff )
         {
             SET_REG_DATA( RXM1SIDH, 0xFF, pObject->ui32MsgIDMask>>3 );
@@ -189,7 +189,7 @@ void CANSetFilter( uint8_t ui8CanFltrNum, tCANMsgObject * pObject )
     volatile uint8_t * RXFEIDL_PTR = FILTER_BASE_ADDRESS + 3 ;
     
     
-/***************************** RX FILTER 'N' *******************************/
+/***************************** RX FILTER 'n' *******************************/
         
         // STANDARD ID FILTER SETTINGS
         if( pObject->ui32MsgID <= 0x7ff )
@@ -262,12 +262,12 @@ uint8_t CANMessageGet(tCANMsgObject *psMsgObject, bool bClrPendingInt)
             int i;
             volatile uint8_t * rxBuffer_ptr = &RXB0D0;
             volatile uint8_t * data_ptr = psMsgObject->pui8MsgData;
-            for(i=0; i<(psMsgObject->ui32MsgLen); i++ )
+            for( i=0; i<(psMsgObject->ui32MsgLen); i++ )
             {
                 //contents of address of the data are filled with the data received in the CAN Controller registers one by one
                 *(data_ptr) = *(rxBuffer_ptr);
-                data_ptr ++;
-                rxBuffer_ptr ++;    
+                data_ptr++;
+                rxBuffer_ptr++;    
             }
         }
         

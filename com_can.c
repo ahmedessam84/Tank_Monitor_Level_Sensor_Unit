@@ -4,6 +4,10 @@
 #include "com_can.h"
 
 
+   // most significant 3 bits are the type of node
+   // least significant 8 bits are the node number
+   // master sends the sync period as a 16 bit value in milliseconds
+
 
 tCANMsgObject rxCANMessage;
 

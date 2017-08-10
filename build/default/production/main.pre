@@ -49,17 +49,17 @@
 
 #pragma config EBTRB = OFF
 
-# 26 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\htc.h"
+# 26 "D:\Program Files (x86)\Microchip\xc8\v1.41\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\xc8debug.h"
+# 13 "D:\Program Files (x86)\Microchip\xc8\v1.41\include\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 49 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h"
+# 49 "D:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h"
 extern volatile unsigned char RXF0SIDH @ 0xF00;
 
 asm("RXF0SIDH equ 0F00h");
@@ -8464,7 +8464,7 @@ extern volatile __bit nWR @ (((unsigned) &PORTE)*8) + 1;
 
 extern volatile __bit nWRITE @ (((unsigned) &SSPSTAT)*8) + 2;
 
-# 18 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18.h"
+# 18 "D:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18.h"
 __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer supported. Please use the MPLAB X MCC."))) void EraseFlash(unsigned long startaddr, unsigned long endaddr);
 
@@ -8487,10 +8487,10 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdbool.h"
+# 12 "D:\Program Files (x86)\Microchip\xc8\v1.41\include\stdbool.h"
 typedef unsigned char bool;
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdint.h"
+# 13 "D:\Program Files (x86)\Microchip\xc8\v1.41\include\stdint.h"
 typedef signed char int8_t;
 
 # 20
@@ -8711,7 +8711,7 @@ int main(void)
 uint16_t ui16ReplyData = 0 ;
 
 # 145
-uint16_t response_time = 0;
+uint16_t response_time_ms = 0;
 uint16_t sync_period = 0;
 rxCANMessage.ui32MsgID = 0x100;
 rxCANMessage.ui32MsgIDMask = 0x7ff;
@@ -8771,12 +8771,10 @@ bRxMsgFlag = 0;
 
 
 
-
-if( rxCANMessage.ui32MsgID == 0x100)
+if( rxCANMessage.ui32MsgID == 0x100 )
 {
 AllowTxFlag = 1;
-response_time = sync_period * (0x01);
-response_time = response_time/100;
+response_time_ms = 10*0x01;
 }
 
 }
@@ -8786,7 +8784,7 @@ if( AllowTxFlag == 1)
 {
 
 
-if( ( tickcntr - Sync_Arrival_Time ) > response_time )
+if( ( tickcntr - Sync_Arrival_Time ) > response_time_ms )
 {
 CANMessageSend( &Reply, 1<<2 );
 AllowTxFlag = 0;

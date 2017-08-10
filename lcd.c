@@ -73,7 +73,7 @@ void LCD_Init(void)
 	// Display, Cursor, Blinking
 	SendCommand( 0x0c );
 
-#else if LCD_TYPE_TOPWAY
+#else
 
     //function set
 	SendCommand(0x03);

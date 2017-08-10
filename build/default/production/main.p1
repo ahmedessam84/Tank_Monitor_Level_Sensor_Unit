@@ -21,13 +21,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _AvgMeasure `(ui ~T0 @X0 0 ef ]
 "28 lcd.h
 [v _LCD_GoToXy `(v ~T0 @X0 0 ef2`uc`uc ]
-"16841 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
+"16841 D:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
 [v _GIE `Vb ~T0 @X0 0 e@32663 ]
 "135 CAN.h
 [v _CANMessageGet `(uc ~T0 @X0 0 ef2`*S574`uc ]
 "136
 [v _CANMessageSend `(v ~T0 @X0 0 ef2`*S574`uc ]
-"12946 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
+"12946 D:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
 [s S412 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S412 . RXB0IF RXB1IF TXB0IF TXB1IF TXB2IF ERRIF WAKIF IRXIF ]
 "12956
@@ -56,7 +56,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _CANIntStatus `(uc ~T0 @X0 0 ef ]
 "138
 [v _CANIntClear `(v ~T0 @X0 0 ef1`uc ]
-"16093 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
+"16093 D:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
 [s S563 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S563 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
 "16103
@@ -157,7 +157,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f458.h: 49: extern volatile unsigned char RXF0SIDH @ 0xF00;
-"51 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
+"51 D:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
 [; ;pic18f458.h: 51: asm("RXF0SIDH equ 0F00h");
 [; <" RXF0SIDH equ 0F00h ;# ">
 [; ;pic18f458.h: 54: typedef union {
@@ -6569,9 +6569,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 135: uint16_t ui16ReplyData = 0 ;
 [e = _ui16ReplyData -> -> 0 `i `ui ]
 "145
-[v _response_time `ui ~T0 @X0 1 a ]
-[; ;main.c: 145: uint16_t response_time = 0;
-[e = _response_time -> -> 0 `i `ui ]
+[v _response_time_ms `ui ~T0 @X0 1 a ]
+[; ;main.c: 145: uint16_t response_time_ms = 0;
+[e = _response_time_ms -> -> 0 `i `ui ]
 "146
 [v _sync_period `ui ~T0 @X0 1 a ]
 [; ;main.c: 146: uint16_t sync_period = 0;
@@ -6683,217 +6683,214 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 204: bRxMsgFlag = 0;
 "204
 [e = _bRxMsgFlag -> -> 0 `i `uc ]
-[; ;main.c: 209: if( rxCANMessage.ui32MsgID == 0x100)
-"209
+[; ;main.c: 208: if( rxCANMessage.ui32MsgID == 0x100 )
+"208
 [e $ ! == . _rxCANMessage 0 -> -> -> 256 `i `l `ul 584  ]
-[; ;main.c: 210: {
-"210
+[; ;main.c: 209: {
+"209
 {
-[; ;main.c: 211: AllowTxFlag = 1;
-"211
+[; ;main.c: 210: AllowTxFlag = 1;
+"210
 [e = _AllowTxFlag -> -> 1 `i `uc ]
-[; ;main.c: 212: response_time = sync_period * (0x01);
+[; ;main.c: 211: response_time_ms = 10*0x01;
+"211
+[e = _response_time_ms -> * -> 10 `i -> 1 `i `ui ]
 "212
-[e = _response_time * _sync_period -> -> 1 `i `ui ]
-[; ;main.c: 213: response_time = response_time/100;
-"213
-[e = _response_time / _response_time -> -> 100 `i `ui ]
-"214
 }
 [e :U 584 ]
-"216
+"214
 }
 [e :U 583 ]
+[; ;main.c: 212: }
 [; ;main.c: 214: }
-[; ;main.c: 216: }
-[; ;main.c: 219: if( AllowTxFlag == 1)
-"219
+[; ;main.c: 217: if( AllowTxFlag == 1)
+"217
 [e $ ! == -> _AllowTxFlag `i -> 1 `i 585  ]
-[; ;main.c: 220: {
-"220
+[; ;main.c: 218: {
+"218
 {
-[; ;main.c: 223: if( ( tickcntr - Sync_Arrival_Time ) > response_time )
+[; ;main.c: 221: if( ( tickcntr - Sync_Arrival_Time ) > response_time_ms )
+"221
+[e $ ! > - _tickcntr _Sync_Arrival_Time -> _response_time_ms `ul 586  ]
+[; ;main.c: 222: {
+"222
+{
+[; ;main.c: 223: CANMessageSend( &Reply, 1<<2 );
 "223
-[e $ ! > - _tickcntr _Sync_Arrival_Time -> _response_time `ul 586  ]
-[; ;main.c: 224: {
-"224
-{
-[; ;main.c: 225: CANMessageSend( &Reply, 1<<2 );
-"225
 [e ( _CANMessageSend (2 , &U _Reply -> << -> 1 `i -> 2 `i `uc ]
-[; ;main.c: 226: AllowTxFlag = 0;
-"226
+[; ;main.c: 224: AllowTxFlag = 0;
+"224
 [e = _AllowTxFlag -> -> 0 `i `uc ]
-"227
+"225
 }
 [e :U 586 ]
-"229
+"227
 }
+[; ;main.c: 225: }
 [; ;main.c: 227: }
-[; ;main.c: 229: }
 [e $U 587  ]
-"230
+"228
 [e :U 585 ]
-[; ;main.c: 230: else{};
+[; ;main.c: 228: else{};
 {
 }
 [e :U 587 ]
-[; ;main.c: 234: if(PIR3bits.ERRIF == 1)
-"234
+[; ;main.c: 232: if(PIR3bits.ERRIF == 1)
+"232
 [e $ ! == -> . . _PIR3bits 0 5 `i -> 1 `i 588  ]
-[; ;main.c: 235: {
-"235
+[; ;main.c: 233: {
+"233
 {
-[; ;main.c: 236: LATDbits.LD2 = 1;
-"236
+[; ;main.c: 234: LATDbits.LD2 = 1;
+"234
 [e = . . _LATDbits 1 2 -> -> 1 `i `uc ]
-[; ;main.c: 237: LATDbits.LD3 = 0;
-"237
+[; ;main.c: 235: LATDbits.LD3 = 0;
+"235
 [e = . . _LATDbits 1 3 -> -> 0 `i `uc ]
-[; ;main.c: 239: PIR3bits.ERRIF = 0;
-"239
+[; ;main.c: 237: PIR3bits.ERRIF = 0;
+"237
 [e = . . _PIR3bits 0 5 -> -> 0 `i `uc ]
-"240
+"238
 }
-[; ;main.c: 240: }
+[; ;main.c: 238: }
 [e $U 589  ]
-"241
+"239
 [e :U 588 ]
-[; ;main.c: 241: else
-[; ;main.c: 242: {
-"242
+[; ;main.c: 239: else
+[; ;main.c: 240: {
+"240
 {
-[; ;main.c: 243: LATDbits.LD3 = 1;
-"243
+[; ;main.c: 241: LATDbits.LD3 = 1;
+"241
 [e = . . _LATDbits 1 3 -> -> 1 `i `uc ]
-[; ;main.c: 244: LATDbits.LD2 = 0;
-"244
+[; ;main.c: 242: LATDbits.LD2 = 0;
+"242
 [e = . . _LATDbits 1 2 -> -> 0 `i `uc ]
-"245
+"243
 }
 [e :U 589 ]
-"247
+"245
 }
 [e :U 578 ]
 "171
 [e $U 579  ]
 [e :U 580 ]
+[; ;main.c: 243: }
 [; ;main.c: 245: }
-[; ;main.c: 247: }
-[; ;main.c: 249: return 0;
-"249
+[; ;main.c: 247: return 0;
+"247
 [e ) -> 0 `i ]
 [e $UE 577  ]
-[; ;main.c: 250: }
-"250
+[; ;main.c: 248: }
+"248
 [e :UE 577 ]
 }
 [v F7154 `(v ~T0 @X0 1 tf ]
-"252
+"250
 [v _ISR `IF7154 ~T0 @X0 1 e ]
-"253
+"251
 {
-[; ;main.c: 252: void interrupt ISR(void)
-[; ;main.c: 253: {
+[; ;main.c: 250: void interrupt ISR(void)
+[; ;main.c: 251: {
 [e :U _ISR ]
 [f ]
-[; ;main.c: 256: ui8Status = CANIntStatus();
-"256
+[; ;main.c: 254: ui8Status = CANIntStatus();
+"254
 [e = _ui8Status ( _CANIntStatus ..  ]
-[; ;main.c: 259: if( ((ui8Status & 1<<0) == 1<<0) || ((ui8Status & 1<<1) == 1<<1) )
-"259
+[; ;main.c: 257: if( ((ui8Status & 1<<0) == 1<<0) || ((ui8Status & 1<<1) == 1<<1) )
+"257
 [e $ ! || == & -> _ui8Status `i << -> 1 `i -> 0 `i << -> 1 `i -> 0 `i == & -> _ui8Status `i << -> 1 `i -> 1 `i << -> 1 `i -> 1 `i 591  ]
-[; ;main.c: 260: {
-"260
+[; ;main.c: 258: {
+"258
 {
-[; ;main.c: 261: bRxMsgFlag = 1;
-"261
+[; ;main.c: 259: bRxMsgFlag = 1;
+"259
 [e = _bRxMsgFlag -> -> 1 `i `uc ]
-[; ;main.c: 262: CANIntClear(ui8Status);
-"262
+[; ;main.c: 260: CANIntClear(ui8Status);
+"260
 [e ( _CANIntClear (1 _ui8Status ]
-"263
+"261
 }
-[; ;main.c: 263: }
+[; ;main.c: 261: }
 [e $U 592  ]
-"264
+"262
 [e :U 591 ]
-[; ;main.c: 264: else{};
+[; ;main.c: 262: else{};
 {
 }
 [e :U 592 ]
-[; ;main.c: 269: if( INTCONbits.RBIF == 1 )
-"269
+[; ;main.c: 267: if( INTCONbits.RBIF == 1 )
+"267
 [e $ ! == -> . . _INTCONbits 0 0 `i -> 1 `i 593  ]
-[; ;main.c: 270: {
+[; ;main.c: 268: {
+"268
+{
+[; ;main.c: 270: if( PORTBbits.RB4 == 1 )
 "270
-{
-[; ;main.c: 272: if( PORTBbits.RB4 == 1 )
-"272
 [e $ ! == -> . . _PORTBbits 0 4 `i -> 1 `i 594  ]
-[; ;main.c: 273: {
+[; ;main.c: 271: {
+"271
+{
+[; ;main.c: 273: TMR1 = 0;
 "273
-{
-[; ;main.c: 275: TMR1 = 0;
-"275
 [e = _TMR1 -> -> 0 `i `us ]
-[; ;main.c: 276: TMR1ON = 1;
-"276
+[; ;main.c: 274: TMR1ON = 1;
+"274
 [e = _TMR1ON -> -> 1 `i `b ]
-"277
+"275
 }
-[; ;main.c: 277: }
+[; ;main.c: 275: }
 [e $U 595  ]
-"278
+"276
 [e :U 594 ]
-[; ;main.c: 278: else
-[; ;main.c: 279: {
-"279
+[; ;main.c: 276: else
+[; ;main.c: 277: {
+"277
 {
-[; ;main.c: 281: TMR1ON = 0;
-"281
+[; ;main.c: 279: TMR1ON = 0;
+"279
 [e = _TMR1ON -> -> 0 `i `b ]
-"282
+"280
 }
 [e :U 595 ]
-[; ;main.c: 282: }
-[; ;main.c: 285: INTCONbits.RBIF = 0;
-"285
+[; ;main.c: 280: }
+[; ;main.c: 283: INTCONbits.RBIF = 0;
+"283
 [e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
-"286
+"284
 }
-[; ;main.c: 286: }
+[; ;main.c: 284: }
 [e $U 596  ]
-"287
+"285
 [e :U 593 ]
-[; ;main.c: 287: else{};
+[; ;main.c: 285: else{};
 {
 }
 [e :U 596 ]
-[; ;main.c: 291: if( PIR1bits.CCP1IF == 1 )
-"291
+[; ;main.c: 289: if( PIR1bits.CCP1IF == 1 )
+"289
 [e $ ! == -> . . _PIR1bits 0 2 `i -> 1 `i 597  ]
-[; ;main.c: 292: {
-"292
+[; ;main.c: 290: {
+"290
 {
-[; ;main.c: 295: tickcntr++;
-"295
+[; ;main.c: 293: tickcntr++;
+"293
 [e ++ _tickcntr -> -> -> 1 `i `l `ul ]
-[; ;main.c: 298: PIR1bits.CCP1IF = 0;
-"298
+[; ;main.c: 296: PIR1bits.CCP1IF = 0;
+"296
 [e = . . _PIR1bits 0 2 -> -> 0 `i `uc ]
-"300
+"298
 }
-[; ;main.c: 300: }
+[; ;main.c: 298: }
 [e $U 598  ]
-"301
+"299
 [e :U 597 ]
-[; ;main.c: 301: else{};
+[; ;main.c: 299: else{};
 {
 }
 [e :U 598 ]
-[; ;main.c: 303: }
-"303
+[; ;main.c: 301: }
+"301
 [e :UE 590 ]
 }
 [a 1C 72 101 105 103 104 116 61 32 32 32 32 32 32 99 109 0 ]

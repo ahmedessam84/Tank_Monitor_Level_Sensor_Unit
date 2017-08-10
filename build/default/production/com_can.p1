@@ -16,7 +16,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _CANIntClear `(v ~T0 @X0 0 ef1`uc ]
 "140
 [v _CANIntEnable `(v ~T0 @X0 0 ef1`uc ]
-"16093 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
+"16093 D:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
 [s S563 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S563 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
 "16103
@@ -34,7 +34,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f458.h: 49: extern volatile unsigned char RXF0SIDH @ 0xF00;
-"51 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
+"51 D:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
 [; ;pic18f458.h: 51: asm("RXF0SIDH equ 0F00h");
 [; <" RXF0SIDH equ 0F00h ;# ">
 [; ;pic18f458.h: 54: typedef union {
@@ -6332,51 +6332,51 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;com_can.h: 27: uint8_t * node_data_ptr;
 [; ;com_can.h: 28: }Node_t;
 [; ;com_can.h: 31: void ComInit(void);
-"8 com_can.c
+"12 com_can.c
 [v _rxCANMessage `S574 ~T0 @X0 1 e ]
-[; ;com_can.c: 8: tCANMsgObject rxCANMessage;
-"11
+[; ;com_can.c: 12: tCANMsgObject rxCANMessage;
+"15
 [v _Reply `S574 ~T0 @X0 1 e ]
-[; ;com_can.c: 11: tCANMsgObject Reply;
-"13
+[; ;com_can.c: 15: tCANMsgObject Reply;
+"17
 [v _ComInit `(v ~T0 @X0 1 ef ]
-"14
+"18
 {
-[; ;com_can.c: 13: void ComInit(void)
-[; ;com_can.c: 14: {
+[; ;com_can.c: 17: void ComInit(void)
+[; ;com_can.c: 18: {
 [e :U _ComInit ]
 [f ]
-[; ;com_can.c: 15: CANInit();
-"15
-[e ( _CANInit ..  ]
-[; ;com_can.c: 16: CANSetMode( 4 );
-"16
-[e ( _CANSetMode (1 -> -> 4 `i `uc ]
-[; ;com_can.c: 19: CANSetBaudRate( 125000 );
+[; ;com_can.c: 19: CANInit();
 "19
-[e ( _CANSetBaudRate (1 -> -> 125000 `l `ul ]
-[; ;com_can.c: 20: CANSetMask( 0, &rxCANMessage, 0x00, 0 );
+[e ( _CANInit ..  ]
+[; ;com_can.c: 20: CANSetMode( 4 );
 "20
-[e ( _CANSetMask (4 , , , -> -> 0 `i `uc &U _rxCANMessage -> -> 0 `i `uc -> -> 0 `i `uc ]
-[; ;com_can.c: 21: CANSetFilter( 0, &rxCANMessage );
-"21
-[e ( _CANSetFilter (2 , -> -> 0 `i `uc &U _rxCANMessage ]
-[; ;com_can.c: 23: CANSetMode( 0 );
+[e ( _CANSetMode (1 -> -> 4 `i `uc ]
+[; ;com_can.c: 23: CANSetBaudRate( 125000 );
 "23
-[e ( _CANSetMode (1 -> -> 0 `i `uc ]
-[; ;com_can.c: 25: CANIntClear( 1<<0 | 1<<1 );
+[e ( _CANSetBaudRate (1 -> -> 125000 `l `ul ]
+[; ;com_can.c: 24: CANSetMask( 0, &rxCANMessage, 0x00, 0 );
+"24
+[e ( _CANSetMask (4 , , , -> -> 0 `i `uc &U _rxCANMessage -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;com_can.c: 25: CANSetFilter( 0, &rxCANMessage );
 "25
-[e ( _CANIntClear (1 -> | << -> 1 `i -> 0 `i << -> 1 `i -> 1 `i `uc ]
-[; ;com_can.c: 26: CANIntEnable( 1<<0 | 1<<1 );
-"26
-[e ( _CANIntEnable (1 -> | << -> 1 `i -> 0 `i << -> 1 `i -> 1 `i `uc ]
-[; ;com_can.c: 28: INTCONbits.GIE = 1 ;
-"28
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;com_can.c: 29: INTCONbits.PEIE = 1;
+[e ( _CANSetFilter (2 , -> -> 0 `i `uc &U _rxCANMessage ]
+[; ;com_can.c: 27: CANSetMode( 0 );
+"27
+[e ( _CANSetMode (1 -> -> 0 `i `uc ]
+[; ;com_can.c: 29: CANIntClear( 1<<0 | 1<<1 );
 "29
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;com_can.c: 30: }
+[e ( _CANIntClear (1 -> | << -> 1 `i -> 0 `i << -> 1 `i -> 1 `i `uc ]
+[; ;com_can.c: 30: CANIntEnable( 1<<0 | 1<<1 );
 "30
+[e ( _CANIntEnable (1 -> | << -> 1 `i -> 0 `i << -> 1 `i -> 1 `i `uc ]
+[; ;com_can.c: 32: INTCONbits.GIE = 1 ;
+"32
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;com_can.c: 33: INTCONbits.PEIE = 1;
+"33
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;com_can.c: 34: }
+"34
 [e :UE 576 ]
 }

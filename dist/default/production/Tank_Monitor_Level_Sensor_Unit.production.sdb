@@ -10,35 +10,7 @@ ERROR_PASSIVE 1
 BUS_OFF 2
 WARNING 3
 ]
-"62 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\float.c
-[v ___ftpack __ftpack `(f  1 e 3 0 ]
-"86 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftadd.c
-[v ___ftadd __ftadd `(f  1 e 3 0 ]
-"54 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftdiv.c
-[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
-"62 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftmul.c
-[v ___ftmul __ftmul `(f  1 e 3 0 ]
-"20 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftsub.c
-[v ___ftsub __ftsub `(f  1 e 3 0 ]
-"44 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\fttol.c
-[v ___fttol __fttol `(l  1 e 4 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
-[v ___lwmod __lwmod `(ui  1 e 2 0 ]
-"28 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwtoft.c
-[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
-"10 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\sprcadd.c
-[v ___fladd __fladd `(d  1 e 3 0 ]
-"245
-[v ___flsub __flsub `(d  1 e 3 0 ]
-"11 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\sprcdiv.c
-[v ___fldiv __fldiv `(d  1 e 3 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\sprcmul.c
-[v ___flmul __flmul `(d  1 e 3 0 ]
-"15 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul32.c
-[v ___lmul __lmul `(ul  1 e 4 0 ]
-"10 D:\Projects\Tank_Monitor_Level_Sensor_Unit\CAN.c
+"10
 [v _CANInit CANInit `(v  1 e 1 0 ]
 "18
 [v _CANSetMode CANSetMode `(v  1 e 1 0 ]
@@ -61,8 +33,36 @@ WARNING 3
 [v _CANIntStatus CANIntStatus `(uc  1 e 1 0 ]
 "18 D:\Projects\Tank_Monitor_Level_Sensor_Unit\clock.c
 [v _Clock_Init Clock_Init `(v  1 e 1 0 ]
-"13 D:\Projects\Tank_Monitor_Level_Sensor_Unit\com_can.c
+"17 D:\Projects\Tank_Monitor_Level_Sensor_Unit\com_can.c
 [v _ComInit ComInit `(v  1 e 1 0 ]
+"62 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"44 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+"8 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"8 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"28 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+"10 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
 "39 D:\Projects\Tank_Monitor_Level_Sensor_Unit\gpio.c
 [v _GPIOPinTypeGPIOOutput GPIOPinTypeGPIOOutput `(v  1 e 1 0 ]
 "65
@@ -87,13 +87,16 @@ WARNING 3
 [v _itoa_new itoa_new `(v  1 e 1 0 ]
 "131
 [v _main main `(i  1 e 2 0 ]
-"252
+"250
 [v _ISR ISR `II(v  1 e 1 0 ]
 "34 D:\Projects\Tank_Monitor_Level_Sensor_Unit\measure.c
 [v _AvgMeasure AvgMeasure `(ui  1 e 2 0 ]
 "8 D:\Projects\Tank_Monitor_Level_Sensor_Unit\timer1.c
 [v _Timer1_Init Timer1_Init `(v  1 e 1 0 ]
-"49 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
+[s S21 . 18 `ul 1 ui32MsgID 4 0 `ul 1 ui32MsgIDMask 4 4 `ul 1 ui32Flags 4 8 `ul 1 ui32MsgLen 4 12 `*.39uc 1 pui8MsgData 2 16 ]
+"12 D:\Projects\Tank_Monitor_Level_Sensor_Unit\com_can.c
+[v _rxCANMessage rxCANMessage `S21  1 e 18 0 ]
+"49 D:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f458.h
 [v _RXF0SIDH RXF0SIDH `VEuc  1 e 1 @3840 ]
 "473
 [v _RXF1SIDH RXF1SIDH `VEuc  1 e 1 @3844 ]
@@ -534,9 +537,6 @@ WARNING 3
 [v _TMR1CS TMR1CS `VEb  1 e 0 @32361 ]
 "18657
 [v _TMR1ON TMR1ON `VEb  1 e 0 @32360 ]
-[s S21 . 18 `ul 1 ui32MsgID 4 0 `ul 1 ui32MsgIDMask 4 4 `ul 1 ui32Flags 4 8 `ul 1 ui32MsgLen 4 12 `*.39uc 1 pui8MsgData 2 16 ]
-"8 D:\Projects\Tank_Monitor_Level_Sensor_Unit\com_can.c
-[v _rxCANMessage rxCANMessage `S21  1 e 18 0 ]
 "96 D:\Projects\Tank_Monitor_Level_Sensor_Unit\main.c
 [v _dist dist `ui  1 e 2 0 ]
 "97
@@ -561,13 +561,13 @@ WARNING 3
 [s S21 . 18 `ul 1 ui32MsgID 4 0 `ul 1 ui32MsgIDMask 4 4 `ul 1 ui32Flags 4 8 `ul 1 ui32MsgLen 4 12 `*.39uc 1 pui8MsgData 2 16 ]
 "152
 [v main@Reply Reply `S21  1 a 18 55 ]
-"146
-[v main@sync_period sync_period `ui  1 a 2 53 ]
 "135
-[v main@ui16ReplyData ui16ReplyData `ui  1 a 2 51 ]
+[v main@ui16ReplyData ui16ReplyData `ui  1 a 2 53 ]
+"146
+[v main@sync_period sync_period `ui  1 a 2 51 ]
 "145
-[v main@response_time response_time `ui  1 a 2 49 ]
-"250
+[v main@response_time_ms response_time_ms `ui  1 a 2 49 ]
+"248
 } 0
 "113
 [v _itoa_new itoa_new `(v  1 e 1 0 ]
@@ -579,7 +579,7 @@ WARNING 3
 [v itoa_new@str str `*.39uc  1 p 2 24 ]
 "122
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+"8 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 {
 "11
@@ -662,10 +662,10 @@ WARNING 3
 {
 "14
 } 0
-"13 D:\Projects\Tank_Monitor_Level_Sensor_Unit\com_can.c
+"17 D:\Projects\Tank_Monitor_Level_Sensor_Unit\com_can.c
 [v _ComInit ComInit `(v  1 e 1 0 ]
 {
-"30
+"34
 } 0
 "18 D:\Projects\Tank_Monitor_Level_Sensor_Unit\CAN.c
 [v _CANSetMode CANSetMode `(v  1 e 1 0 ]
@@ -812,13 +812,13 @@ WARNING 3
 [v AvgMeasure@counter counter `uc  1 a 1 6 ]
 "64
 } 0
-"28 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwtoft.c
+"28 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwtoft.c
 [v ___lwtoft __lwtoft `(f  1 e 3 0 ]
 {
 [v ___lwtoft@c c `ui  1 p 2 23 ]
 "31
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+"8 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "11
@@ -830,7 +830,7 @@ WARNING 3
 [v ___lwdiv@divisor divisor `ui  1 p 2 17 ]
 "31
 } 0
-"44 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\fttol.c
+"44 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\fttol.c
 [v ___fttol __fttol `(l  1 e 4 0 ]
 {
 "47
@@ -842,7 +842,7 @@ WARNING 3
 [v ___fttol@f1 f1 `f  1 p 3 41 ]
 "73
 } 0
-"54 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftdiv.c
+"54 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
 {
 "60
@@ -856,7 +856,7 @@ WARNING 3
 [v ___ftdiv@f2 f2 `f  1 p 3 29 ]
 "86
 } 0
-"62 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\float.c
+"62 D:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 {
 [v ___ftpack@arg arg `um  1 p 3 15 ]
@@ -869,10 +869,10 @@ WARNING 3
 {
 "33
 } 0
-"252 D:\Projects\Tank_Monitor_Level_Sensor_Unit\main.c
+"250 D:\Projects\Tank_Monitor_Level_Sensor_Unit\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"303
+"301
 } 0
 "554 D:\Projects\Tank_Monitor_Level_Sensor_Unit\CAN.c
 [v i2_CANIntClear CANIntClear `(v  1 e 1 0 ]

@@ -138,13 +138,13 @@ int main(void)
    // if mask set to zero any msg will be received
    
    // receive msgs only from master
-   // master id is always set to 001 0000 0001
+   // master id is always set to 001 0000 0000
    // most significant 3 bits are the type of node
    // least significant 8 bits are the node number
    // master sends the sync period as a 16 bit value in milliseconds
-   uint16_t response_time = 0;
+   uint16_t response_time_ms = 0;
    uint16_t sync_period = 0;
-   rxCANMessage.ui32MsgID = 0x100;
+   rxCANMessage.ui32MsgID = 0x100;  // master id is always set to 001 0000 0000
    rxCANMessage.ui32MsgIDMask = 0x7ff;
    rxCANMessage.pui8MsgData = (uint8_t *)&sync_period;
 
@@ -195,22 +195,20 @@ int main(void)
         // if msg received store its value
         if( bRxMsgFlag == 1 )
         {
-            GIE = 0; // enter critical section
+            GIE = 0; // Enter critical section
             CANMessageGet( &rxCANMessage, 0 );
-            // capture the time when the sync message was received
+            // Capture the time when the sync message was received
             Sync_Arrival_Time = tickcntr;
-            GIE = 1; // exit critical section
+            GIE = 1; // Exit critical section
             
             bRxMsgFlag = 0;
             
-            // if msg received is the master sync signal
-            // calculate the response time from the sync_period
-            // the response time is in multiples of the node number
-            if( rxCANMessage.ui32MsgID == 0x100)
+            // If msg received is the master sync signal
+            // the response time is in multiples of 10s of the node number in ms
+            if( rxCANMessage.ui32MsgID == 0x100 )
             {
                 AllowTxFlag = 1;
-                response_time = sync_period * (NODE_NR);
-                response_time = response_time/100;                
+                response_time_ms = 10*NODE_NR;                
             }
                         
         }
@@ -220,7 +218,7 @@ int main(void)
        {
                
             // if response time has passed send the reply
-            if( ( tickcntr - Sync_Arrival_Time ) > response_time )
+            if( ( tickcntr - Sync_Arrival_Time ) > response_time_ms )
             {
                 CANMessageSend( &Reply, CAN_DATA_FRAME );
                 AllowTxFlag = 0;
